@@ -43,6 +43,7 @@ jobs:
         python -m flake8 backend/
         cd backend/
         python manage.py test
+
   build_and_push_to_docker_hub:
       name: Push Docker image to DockerHub
       runs-on: ubuntu-latest
@@ -141,7 +142,6 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           source: "docker-compose.production.yml"
           target: "taski"
-
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
